@@ -1,5 +1,5 @@
 #
-# Copyright © 2020-2024 MaxLinear, Inc.
+# Copyright © 2020-2025 MaxLinear, Inc.
 # Makefile for ppa-drv
 #
 
@@ -8,12 +8,12 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=ppa-drv
 PKG_SOURCE_NAME:=ppa_drv
 # Update last digit only for tag
-PKG_SOURCE_VERSION:=4.2.3.60
+PKG_SOURCE_VERSION:=4.2.3.73
 PKG_PROJECT:=maxlinear
 PKG_SOURCE_PROTO:=git
 CONFIG_UGW_PKG_SOURCE_URL:=ssh://git@github.com
 PKG_SOURCE_URL:=$(CONFIG_UGW_PKG_SOURCE_URL)/$(PKG_PROJECT)/$(PKG_SOURCE_NAME).git
-PKG_MIRROR_HASH:=4f049c06d5f82a56a4907beb9191bd4974a8eb9e12dba4fce3ea1fd6e51fd6c6
+PKG_MIRROR_HASH:=d5bbf9fb2f0a6bb73a702a050f3051e765a9b7dc0777b1097c6fe0ce4809cebf
 PKG_MAINTAINER:=MaxLinear
 PKG_LICENSE:=GPL-2.0
 PKG_LICENSE_FILES:=
@@ -354,7 +354,6 @@ endif
 
 endef
 
-PKG_EXTRA_CFLAGS += -DPPA_SS_VERSION='\"$(PKG_SOURCE_VERSION)\"'
 PKG_EXTRA_CFLAGS += -I$(STAGING_DIR)/usr/include/safeclib
 
 ifneq ($(CONFIG_PACKAGE_kmod-ppa-drv-accel),)
