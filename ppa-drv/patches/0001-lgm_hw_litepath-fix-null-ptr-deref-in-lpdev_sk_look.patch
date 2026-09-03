@@ -1,0 +1,14 @@
+--- a/src/platform/lgm/lgm_hw_litepath.c
++++ b/src/platform/lgm/lgm_hw_litepath.c
+@@ -319,6 +319,10 @@ struct sock *lpdev_sk_lookup(struct uc_session_node *p_item, int ifindex)
+ #if IS_ENABLED(CONFIG_IPV6)
+ 	struct in6_addr *src_ip6, *dst_ip6;
+ #endif
+ 
++	/* tx_if may be unresolved (e.g. locally terminated socket), dev_net() needs a valid netdev */
++	if (!p_item->tx_if)
++		return NULL;
++
+ 	src_port = be16_to_cpu(p_item->pkt.src_port);
+ 	dst_port = be16_to_cpu(p_item->pkt.dst_port);
+ 	rcu_read_lock();
